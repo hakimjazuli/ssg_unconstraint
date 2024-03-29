@@ -16,6 +16,9 @@
 		"client side",
 		"highly extendable"
 	],
+	"dependencies": {
+		"ncp": "^2.0.0"
+	},
 	"author": "hakim_jazuli",
 	"license": "MIT",
 	"bugs": {
