@@ -15,6 +15,6 @@ const options = {
 		if (err) {
 			return console.error(err);
 		}
-		console.log('example files copied successfully!');
+		console.log('example files copied successfully!');	
 	});
 });
