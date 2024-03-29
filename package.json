@@ -2,6 +2,7 @@
 	"name": "@html_first/ssg_unconstraint",
 	"version": "1.0.0",
 	"description": "manipulate constrained static site generated on client side to comply to any framework that uses html attribute as main instruction",
+	"type": "module",
 	"main": "index.mjs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -11,11 +12,9 @@
 		"url": "git+https://github.com/hakimjazuli/ssg_unconstraint.git"
 	},
 	"keywords": [
-		"contrained",
-		"ssg",
-		"client",
-		"side",
-		"manipulation"
+		"ssg manipulation",
+		"client side",
+		"highly extendable"
 	],
 	"author": "hakim_jazuli",
 	"license": "MIT",
