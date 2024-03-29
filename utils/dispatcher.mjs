@@ -1,5 +1,5 @@
 ﻿// @ts-check
-import { client_extender } from './client_extender.mjs';
+import { class_extender } from './class_extender.mjs';
 import { observer } from './observer.mjs';
 import { vars } from './vars.mjs';
 
@@ -29,7 +29,6 @@ export class dispatcher {
 		// @ts-ignore
 		return attribute_;
 	};
-	classes = {};
 	/**
 	 * @param {Element} element
 	 */
@@ -40,10 +39,10 @@ export class dispatcher {
 		while ((instructions = this.get_instruction(element, index))) {
 			try {
 				const [class_, method_, ...arguments_] = instructions.split(vars.delimiter[0]);
-				/** @type {client_extender} */
-				this.classes[class_] = this.observer[class_];
+				/** @type {class_extender} */
+				const class_name = this.observer[class_];
 				// @ts-ignore
-				const class_instruction = new this.classes[class_](element);
+				const class_instruction = new class_name(element);
 				await class_instruction[method_](...arguments_);
 				index++;
 			} catch (error) {

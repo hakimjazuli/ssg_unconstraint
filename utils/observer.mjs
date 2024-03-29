@@ -6,20 +6,21 @@ export class observer {
 	constructor() {
 		this.dispatcher = new dispatcher(this);
 	}
+	first_run = true;
+	first_run_call = async () => {
+		await this.dispatcher.dispatch(document.head);
+		await this.dispatcher.dispatch(document.body);
+		this.first_run = false;
+	};
 	/** @private */
 	config = { attributes: true, childList: true, subtree: true };
 	run = () => {
 		const observer_ = new MutationObserver(this.watcher);
-		const target_node = document.querySelector('head');
-		if (!target_node) {
-			return;
+		observer_.observe(document.head, this.config);
+		observer_.observe(document.body, this.config);
+		if (this.first_run) {
+			this.first_run_call();
 		}
-		observer_.observe(target_node, this.config);
-		const target_node_2 = document.querySelector('body');
-		if (!target_node_2) {
-			return;
-		}
-		observer_.observe(target_node_2, this.config);
 	};
 	/**
 	 * @private
