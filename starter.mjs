@@ -4,7 +4,7 @@ import path from 'path';
 
 const base = process.cwd();
 const folder_ = 'h_client_example';
-const source_dir = path.join(base, 'node_modules', '@html_first', 'html_scrambler', folder_);
+const source_dir = path.join(base, 'node_modules', '@html_first', 'html_unconstraint', folder_);
 const dest_dir = path.join(base, folder_);
 
 const options = {
