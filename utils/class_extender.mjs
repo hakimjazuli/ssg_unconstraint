@@ -107,4 +107,14 @@ export class class_extender {
 			parent_node.replaceChild(new_element, this.element);
 		}
 	};
+	/**
+	 * Description
+	 * @param {string} string
+	 * @param {string} delimiter
+	 */
+	split = (string, delimiter) => {
+		return string
+			.split(new RegExp(`(?<!\\\\)${delimiter}`))
+			.map((part) => part.replace(/\\/, ''));
+	};
 }

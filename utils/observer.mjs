@@ -39,12 +39,26 @@ export class observer {
 				}
 				await this.dispatcher.dispatch(target);
 			} else if (mutation.type === 'childList') {
-				const element = target.querySelector(`[${vars.identifier}]`);
-				if (!element) {
-					return;
+				let element;
+				while ((element = this.get_client_element(target))) {
+					if (!element) {
+						return;
+					}
+					await this.dispatcher.dispatch(element);
 				}
-				await this.dispatcher.dispatch(element);
 			}
 		});
+	};
+	/**
+	 * @private
+	 * @param {Element} target
+	 * @returns {false|Element}
+	 */
+	get_client_element = (target) => {
+		const elem = target.querySelector(`${vars.identifier}`);
+		if (!elem) {
+			return false;
+		}
+		return elem;
 	};
 }
