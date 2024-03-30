@@ -3,12 +3,16 @@
 export class class_extender {
 	/** @type {Element} */
 	element;
+	/** @type {number} */
+	index;
 	/**
 	 * Description
 	 * @param {Element} element
+	 * @param {number} index
 	 */
-	constructor(element) {
+	constructor(element, index) {
 		this.element = element;
+		this.index = index;
 	}
 	/**
 	 * Description

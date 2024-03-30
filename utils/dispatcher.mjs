@@ -42,7 +42,7 @@ export class dispatcher {
 				/** @type {class_extender} */
 				const class_name = this.observer[class_];
 				// @ts-ignore
-				const class_instruction = new class_name(element);
+				const class_instruction = new class_name(element, index);
 				await class_instruction[method_](...arguments_);
 				index++;
 			} catch (error) {

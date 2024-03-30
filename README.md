@@ -4,6 +4,28 @@
 
 -   test passed;
 
+## DESC
+
+have you bought Static Site Generator software? like:
+
+-   **bootstrap studio**,
+-   **pinegrow**,
+-   **wysiwyg web builder**,
+-   or bassicall any closed source SSG software,
+
+there are times they also provide service to publish your litle to unprocessed site directly in
+their UI. altough convenient, there are some scenario, that your generator only support their own
+template, and doesn't allow total control of your html element. and event thought they might provide
+way to do like custom component, you have to often to opt out from its basic (the WYSIWYG part)
+convenient.
+
+-   **IF** you want to use frontend library/framework that their main instructions is placed in
+    attributes to elements.
+-   **AND IF** your only (convinient) way is to mitigate it in the client run time,
+-   **IF** you want to to **unconstrain** your ssg in client browser...
+
+then this library is for you...
+
 ## how to use
 
 -   after installing
@@ -36,3 +58,17 @@ means :
 
 -   client;
 -   c[dash]**index**="**class_name**[vars.delimiter[0]]**method**[vars.delimiter[0]]**...arguments**"
+
+## HOW this library works
+
+on runtime, it register mutation observer that detects, attribute 'client' on the mutation list...
+so if you want to call our class in runtime by manually adding attribute to an element, you better
+adding _c-index_ first then... the _client_,
+
+or if you are working on the classes scope you can use our provided static function
+
+-   **vars**.set_c_next(**classes_instance**,...**arguments**);
+-   the **classes_instance** only provide this function with current element and current active
+    index;
+-   **arguments** are following our **pattern**: arg_1: **class_name**, arg_2: **method**, ...arg_3
+    **...arguments**
