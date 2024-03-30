@@ -1,6 +1,6 @@
 {
 	"name": "@html_first/ssg_unconstraint",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "manipulate constrained static site generated on client side to comply to any framework that uses html attribute as main instruction",
 	"type": "module",
 	"main": "index.mjs",
