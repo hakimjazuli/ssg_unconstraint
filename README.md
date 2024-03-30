@@ -2,8 +2,7 @@
 
 ## status
 
--   not yet stable
--   wait for few days or until further note
+-   test passed;
 
 ## how to use
 
