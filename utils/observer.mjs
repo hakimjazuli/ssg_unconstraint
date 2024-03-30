@@ -6,10 +6,11 @@ export class observer {
 	constructor() {
 		this.dispatcher = new dispatcher(this);
 	}
+	/** @private */
 	first_run = true;
+	/** @private */
 	first_run_call = async () => {
-		await this.dispatcher.dispatch(document.head);
-		await this.dispatcher.dispatch(document.body);
+		await this.loop_through_elements();
 		this.first_run = false;
 	};
 	/** @private */
@@ -39,23 +40,30 @@ export class observer {
 				}
 				await this.dispatcher.dispatch(target);
 			} else if (mutation.type === 'childList') {
-				let element;
-				while ((element = this.get_client_element(target))) {
-					if (!element) {
-						return;
-					}
-					await this.dispatcher.dispatch(element);
-				}
+				this.loop_through_elements(target);
 			}
 		});
 	};
 	/**
 	 * @private
-	 * @param {Element} target
+	 * @param {Element|Document} [target=document]
+	 */
+	loop_through_elements = async (target = document) => {
+		let element;
+		while ((element = this.get_client_element(target))) {
+			if (!element) {
+				return;
+			}
+			await this.dispatcher.dispatch(element);
+		}
+	};
+	/**
+	 * @private
+	 * @param {Element|Document} target
 	 * @returns {false|Element}
 	 */
 	get_client_element = (target) => {
-		const elem = target.querySelector(`${vars.identifier}`);
+		const elem = target.querySelector(`[${vars.identifier}]`);
 		if (!elem) {
 			return false;
 		}

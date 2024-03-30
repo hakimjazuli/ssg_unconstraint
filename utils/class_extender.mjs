@@ -31,22 +31,24 @@ export class class_extender {
 	 * - false default: use outerHTML of the element to be looped
 	 * - true;
 	 */
-	surround_with = (argument_open, argument_close, use_inner = false) => {
-		const text_before = document.createTextNode(argument_open);
-		const text_after = document.createTextNode(argument_close);
+	surround_with = (argument_open, argument_close, use_inner = false, use_first_child = false) => {
+		/** @param {string} string */
+		const assign_new_string = (string) => `${argument_open}${string}${argument_close}`;
 		if (use_inner) {
-			const parent_node = this.element;
-			const elem = this.element.childNodes[0];
-			parent_node.insertBefore(text_before, elem);
-			parent_node.insertBefore(text_after, elem.nextSibling);
+			let string = this.element.innerHTML;
+			try {
+				if (use_first_child) {
+					// @ts-ignore
+					string = this.element.firstChild.outerHTML;
+				}
+			} catch (error) {
+				// @ts-ignore
+				string = this.element.firstChild;
+			}
+			this.element.innerHTML = assign_new_string(string);
 			return;
 		}
-		const parent_node = this.element.parentNode;
-		if (!parent_node) {
-			return;
-		}
-		parent_node.insertBefore(text_before, this.element);
-		parent_node.insertBefore(text_after, this.element.nextSibling);
+		this.element.outerHTML = assign_new_string(this.element.outerHTML);
 	};
 	/**
 	 * Description

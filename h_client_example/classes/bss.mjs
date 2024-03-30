@@ -1,5 +1,5 @@
 ﻿// @ts-check
-import { class_extender, vars } from '../../index.mjs';
+import { class_extender, vars } from '@html_first/ssg_unconstraint';
 
 export class bss extends class_extender {
 	/**

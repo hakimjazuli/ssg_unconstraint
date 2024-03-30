@@ -1,5 +1,5 @@
 ﻿// @ts-check
-import { class_extender } from '../../index.mjs';
+import { class_extender } from '@html_first/ssg_unconstraint';
 
 export class alpine extends class_extender {
 	/**
@@ -15,7 +15,8 @@ export class alpine extends class_extender {
 		this.surround_with(
 			`<template x-for_="${for_argument}" :key="${key}">`,
 			'</template>',
-			use_inner
+			use_inner,
+			true
 		);
 	};
 	/**
