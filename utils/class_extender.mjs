@@ -6,7 +6,6 @@ export class class_extender {
 	/** @type {number} */
 	index;
 	/**
-	 * Description
 	 * @param {Element} element
 	 * @param {number} index
 	 */
@@ -15,7 +14,6 @@ export class class_extender {
 		this.index = index;
 	}
 	/**
-	 * Description
 	 * @param {string} element_string
 	 * @param {boolean} [only_inner]
 	 */
@@ -28,7 +26,6 @@ export class class_extender {
 		this.element.remove();
 	};
 	/**
-	 * Description
 	 * @param {string} argument_open
 	 * @param {string} argument_close
 	 * @param {boolean} [use_inner]
@@ -55,7 +52,6 @@ export class class_extender {
 		this.element.outerHTML = assign_new_string(this.element.outerHTML);
 	};
 	/**
-	 * Description
 	 * @param {string} open_arguments
 	 * @param {boolean} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
@@ -76,7 +72,6 @@ export class class_extender {
 		parent_node.insertBefore(text_before, this.element);
 	};
 	/**
-	 * Description
 	 * @param {string} close_argument
 	 * @param {boolean} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
@@ -97,7 +92,6 @@ export class class_extender {
 		parent_node.insertBefore(text_after, this.element.nextSibling);
 	};
 	/**
-	 * Description
 	 * @param {string} new_tag
 	 */
 	tag = async (new_tag) => {
@@ -114,7 +108,29 @@ export class class_extender {
 		}
 	};
 	/**
-	 * Description
+	 * @protected
+	 * @param {string} trigger
+	 * @param {()=>(any|Promise<any>)} callback__
+	 */
+	event = (trigger, callback__) => {
+		const observer = new MutationObserver(
+			/**
+			 * @param {MutationRecord[]} mutations_list
+			 * @param {MutationObserver} observer
+			 */
+			(mutations_list, observer) => {
+				mutations_list.forEach((mutation) => {
+					if (!this.element.parentNode) {
+						this.element.removeEventListener('click', callback__);
+						observer.disconnect();
+					}
+				});
+			}
+		);
+		observer.observe(this.element, { childList: true, subtree: true });
+		this.element.addEventListener(trigger, callback__);
+	};
+	/**
 	 * @param {string} string
 	 * @param {string} delimiter
 	 */

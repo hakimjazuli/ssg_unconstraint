@@ -38,6 +38,9 @@ export class dispatcher {
 		let instructions;
 		while ((instructions = this.get_instruction(element, index))) {
 			try {
+				if (!element.parentNode) {
+					continue;
+				}
 				const [class_, method_, ...arguments_] = instructions.split(vars.delimiter[0]);
 				/** @type {class_extender} */
 				const class_name = this.observer[class_];
@@ -45,8 +48,11 @@ export class dispatcher {
 				const class_instruction = new class_name(element, index);
 				await class_instruction[method_](...arguments_);
 				index++;
-			} catch (error) {
-				console.error(error);
+			} catch (reason) {
+				console.error({
+					message: `instruction: ${instructions} for ${element.outerHTML}, skiped`,
+					reason,
+				});
 			}
 		}
 	};
