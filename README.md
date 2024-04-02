@@ -67,8 +67,6 @@ adding _c-index_ first then... the _client_,
 
 or if you are working on the classes scope you can use our provided static function
 
--   **vars**.set_c_next(**classes_instance**,...**arguments**);
--   the **classes_instance** only provide this function with current element and current active
-    index;
+-   **class_instance**.set_c_next(...**arguments**);
 -   **arguments** are following our **pattern**: arg_1: **class_name**, arg_2: **method**, ...arg_3
     **...arguments**

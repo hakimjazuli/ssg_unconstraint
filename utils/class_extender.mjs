@@ -1,5 +1,7 @@
 ﻿// @ts-check
 
+import { vars } from './vars.mjs';
+
 export class class_extender {
 	/** @type {Element} */
 	element;
@@ -14,6 +16,7 @@ export class class_extender {
 		this.index = index;
 	}
 	/**
+	 * @protected
 	 * @param {string} element_string
 	 * @param {boolean} [only_inner]
 	 */
@@ -26,6 +29,7 @@ export class class_extender {
 		this.element.remove();
 	};
 	/**
+	 * @protected
 	 * @param {string} argument_open
 	 * @param {string} argument_close
 	 * @param {boolean} [use_inner]
@@ -52,6 +56,7 @@ export class class_extender {
 		this.element.outerHTML = assign_new_string(this.element.outerHTML);
 	};
 	/**
+	 * @protected
 	 * @param {string} open_arguments
 	 * @param {boolean} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
@@ -72,6 +77,7 @@ export class class_extender {
 		parent_node.insertBefore(text_before, this.element);
 	};
 	/**
+	 * @protected
 	 * @param {string} close_argument
 	 * @param {boolean} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
@@ -92,6 +98,7 @@ export class class_extender {
 		parent_node.insertBefore(text_after, this.element.nextSibling);
 	};
 	/**
+	 * @protected
 	 * @param {string} new_tag
 	 */
 	tag = async (new_tag) => {
@@ -131,6 +138,7 @@ export class class_extender {
 		this.element.addEventListener(trigger, callback__);
 	};
 	/**
+	 * @protected
 	 * @param {string} string
 	 * @param {string} delimiter
 	 */
@@ -138,5 +146,25 @@ export class class_extender {
 		return string
 			.split(new RegExp(`(?<!\\\\)${delimiter}`))
 			.map((part) => part.replace(/\\/, ''));
+	};
+	/**
+	 * @private
+	 * @param {number} index
+	 */
+	get_current_valid_index = (index) => {
+		while (this.element.hasAttribute(`${vars.instruction_identifier}${index}`)) {
+			index++;
+		}
+		return index;
+	};
+	/**
+	 * @protected
+	 * @param {string[]} arguments_
+	 */
+	set_c_next = (...arguments_) => {
+		this.element.setAttribute(
+			`${vars.instruction(this.get_current_valid_index(this.index))}`,
+			arguments_.join(vars.delimiter[0])
+		);
 	};
 }
