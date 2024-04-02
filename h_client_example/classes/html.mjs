@@ -7,4 +7,8 @@ export class html extends class_extender {
 			console.log(message);
 		});
 	};
+	compound = (class_name, method, ...arguments_) => {
+		this.set_c_next('html', 'example', 'hi');
+		this.set_c_next(class_name, method, ...arguments_);
+	};
 }
