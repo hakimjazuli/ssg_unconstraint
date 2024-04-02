@@ -152,6 +152,7 @@ export class class_extender {
 	 * @param {number} index
 	 */
 	get_current_valid_index = (index) => {
+		index++;
 		while (this.element.hasAttribute(`${vars.instruction_identifier}${index}`)) {
 			index++;
 		}
