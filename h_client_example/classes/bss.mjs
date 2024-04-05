@@ -5,7 +5,7 @@ export class bss extends class_extender {
 	/**
 	 * Description
 	 * @param {Array<string>} target_attribute_n_value
-	 * - ...attribute_name,attribute_value,mode_attr_or_prop;
+	 * - ...attribute_or_prop_name,attribute_or_prop_value,mode_attr_or_prop;
 	 */
 	select = async (...target_attribute_n_value) => {
 		const option_child = this.element.querySelector('option');

@@ -1,9 +1,5 @@
 ﻿# ssg_unconstraint
 
-## status
-
--   test passed;
-
 ## DESC
 
 have you bought Static Site Generator software? like:
@@ -70,3 +66,9 @@ or if you are working on the classes scope you can use our provided static funct
 -   **class_instance**.set_c_next(...**arguments**);
 -   **arguments** are following our **pattern**: arg_1: **class_name**, arg_2: **method**, ...arg_3
     **...arguments**
+
+## version info
+
+-   **1.0.xx** past test
+-   **1.1.xx** added optional helper to global scope to set and intiate required "c-index" and
+    "client" to element

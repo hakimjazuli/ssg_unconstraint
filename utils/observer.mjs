@@ -1,10 +1,20 @@
 ﻿// @ts-check
+import { class_extender } from './class_extender.mjs';
 import { dispatcher } from './dispatcher.mjs';
 import { vars } from './vars.mjs';
 
 export class observer {
-	constructor() {
+	/**
+	 * @param {false|string} [use_helper]
+	 * - false default= do nothing;
+	 * - string: will assign to window[use_helper] object of functions to set classes intstuction to element;
+	 */
+	constructor(use_helper = false) {
 		this.dispatcher = new dispatcher(this);
+		if (typeof use_helper === 'string') {
+			// @ts-ignore
+			window[use_helper] = class_extender.helper;
+		}
 	}
 	/** @private */
 	first_run = true;

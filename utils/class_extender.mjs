@@ -168,4 +168,30 @@ export class class_extender {
 			arguments_.join(vars.delimiter[0])
 		);
 	};
+	static helper = {
+		/**
+		 * @param {number} index
+		 * @param {Element} element
+		 * @param {...string} arguments_
+		 */
+		set_c: (index, element, ...arguments_) => {
+			element.setAttribute(`${vars.instruction(index)}`, arguments_.join(vars.delimiter[0]));
+		},
+		/**
+		 * @param {Element} element
+		 */
+		initiate_c: (element) => {
+			element.setAttribute(vars.instruction_identifier, '');
+		},
+		/**
+		 * @param {number} index
+		 * @param {Element} element
+		 * @param {...string} arguments_
+		 */
+		set_c_then_init: (index, element, ...arguments_) => {
+			this_.helper.set_c(index, element, ...arguments_);
+			this_.helper.initiate_c(element);
+		},
+	};
 }
+const this_ = class_extender;

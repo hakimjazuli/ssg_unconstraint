@@ -9,7 +9,12 @@ new (class extends observer {
 	bss = bss;
 	html = html;
 	/**
-	 * classes above can get you hint on how to extends to more customizable class
-	 * register your classes bellow
+	 * classes above can get you hint on how to extends to more customizable class;
+	 * register your classes bellow;
 	 */
-})().run();
+})(
+	/**
+	 * use_helper
+	 */
+	false
+).run();
