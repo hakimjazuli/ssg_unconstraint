@@ -1,8 +1,7 @@
 ﻿// @ts-check
-import { class_extender } from './class_extender.mjs';
-import { observer } from './observer.mjs';
 import { vars } from './vars.mjs';
 
+/** @typedef {import("./observer.mjs").observer} observer*/
 export class dispatcher {
 	/** @type {observer} */
 	observer;
@@ -42,7 +41,7 @@ export class dispatcher {
 					continue;
 				}
 				const [class_, method_, ...arguments_] = instructions.split(vars.delimiter[0]);
-				/** @type {class_extender} */
+				/** @type {import("./class_extender.mjs").class_extender}*/
 				const class_name = this.observer[class_];
 				// @ts-ignore
 				const class_instruction = new class_name(element, index);

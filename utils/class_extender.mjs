@@ -1,5 +1,4 @@
 ﻿// @ts-check
-
 import { vars } from './vars.mjs';
 
 export class class_extender {
