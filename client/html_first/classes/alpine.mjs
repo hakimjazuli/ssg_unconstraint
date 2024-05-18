@@ -1,13 +1,13 @@
 ﻿// @ts-check
-import { class_extender } from '@html_first/ssg_unconstraint';
+import { _ClientExtender } from '@html_first/ssg_unconstraint';
 
-export class alpine extends class_extender {
+export class alpine extends _ClientExtender {
 	/**
 	 * Description
 	 * @param {string} for_argument
 	 * @param {string} key
 	 * - alpine looped element identifier
-	 * @param {boolean} [use_inner]
+	 * @param {false|string} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
 	 * - true;
 	 */
@@ -22,7 +22,7 @@ export class alpine extends class_extender {
 	/**
 	 * Description
 	 * @param {string} if_argument
-	 * @param {boolean} [use_inner]
+	 * @param {false|string} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
 	 * - true;
 	 */

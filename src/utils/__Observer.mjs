@@ -1,20 +1,25 @@
-﻿// @ts-check
-import { class_extender } from './class_extender.mjs';
-import { dispatcher } from './dispatcher.mjs';
-import { vars } from './vars.mjs';
+// @ts-check
 
-export class observer {
-	/**
-	 * @param {false|string} [use_helper]
-	 * - false default= do nothing;
-	 * - string: will assign to window[use_helper] object of functions to set classes intstuction to element;
-	 */
-	constructor(use_helper = false) {
-		this.dispatcher = new dispatcher(this);
-		if (typeof use_helper === 'string') {
+import { __AppSettings } from '../vars/__AppSettings.mjs';
+import { Dispatcher } from './Dispatcher.mjs';
+import { _ClientExtender } from './_CientExtender.mjs';
+
+/**
+ * - extends __Observer;
+ * - register extended _ClientExtender:
+ * > - 'name' = typeof class;
+ */
+export class __Observer {
+	/** @type {__Observer} */
+	static __;
+	/** @param {typeof __AppSettings} __app_settings*/
+	constructor(__app_settings) {
+		new __AppSettings();
+		if (typeof __AppSettings.__._use_window_object_helper === 'string') {
 			// @ts-ignore
-			window[use_helper] = class_extender.helper;
+			window[use_helper] = _ClientExtender.helper;
 		}
+		__Observer.__ = this;
 	}
 	/** @private */
 	first_run = true;
@@ -45,10 +50,10 @@ export class observer {
 				return;
 			}
 			if (mutation.type === 'attributes') {
-				if (!target.hasAttribute(vars.identifier)) {
+				if (!target.hasAttribute(__AppSettings.__._client_identifier)) {
 					return;
 				}
-				await this.dispatcher.dispatch(target);
+				await Dispatcher.dispatch(target);
 			} else if (mutation.type === 'childList') {
 				this.loop_through_elements(target);
 			}
@@ -64,7 +69,7 @@ export class observer {
 			if (!element) {
 				return;
 			}
-			await this.dispatcher.dispatch(element);
+			await Dispatcher.dispatch(element);
 		}
 	};
 	/**
@@ -73,7 +78,7 @@ export class observer {
 	 * @returns {false|Element}
 	 */
 	get_client_element = (target) => {
-		const elem = target.querySelector(`[${vars.identifier}]`);
+		const elem = target.querySelector(`[${__AppSettings.__._client_identifier}]`);
 		if (!elem) {
 			return false;
 		}

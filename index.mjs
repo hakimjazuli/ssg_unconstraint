@@ -1,7 +1,7 @@
 ﻿// @ts-check
-import { observer } from './utils/observer.mjs';
-import { class_extender } from './utils/class_extender.mjs';
-import { vars } from './utils/vars.mjs';
-import { dispatcher } from './utils/dispatcher.mjs';
 
-export { observer, class_extender, vars, dispatcher };
+import { _ClientExtender } from './src/utils/_CientExtender.mjs';
+import { __Observer } from './src/utils/__Observer.mjs';
+import { __AppSettings } from './src/vars/__AppSettings.mjs';
+
+export { __Observer, __AppSettings, _ClientExtender };

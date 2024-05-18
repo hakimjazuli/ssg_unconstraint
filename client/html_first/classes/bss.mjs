@@ -1,7 +1,7 @@
 ﻿// @ts-check
-import { class_extender, vars } from '@html_first/ssg_unconstraint';
+import { _ClientExtender, __AppSettings } from '@html_first/ssg_unconstraint';
 
-export class bss extends class_extender {
+export class bss extends _ClientExtender {
 	/**
 	 * Description
 	 * @param {Array<string>} target_attribute_n_value
@@ -15,7 +15,7 @@ export class bss extends class_extender {
 		for (let i = 0; i < target_attribute_n_value.length; i++) {
 			const [attribute, value, mode_attr_or_prop = 'attr'] = this.split(
 				target_attribute_n_value[i],
-				vars.delimiter[1]
+				__AppSettings.__._separator[1]
 			);
 			switch (mode_attr_or_prop) {
 				case 'attr':

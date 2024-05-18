@@ -1,7 +1,8 @@
-﻿// @ts-check
-import { vars } from './vars.mjs';
+// @ts-check
 
-export class class_extender {
+import { __AppSettings as __AppSettings } from '../vars/__AppSettings.mjs';
+
+export class _ClientExtender {
 	/** @type {Element} */
 	element;
 	/** @type {number} */
@@ -17,7 +18,7 @@ export class class_extender {
 	/**
 	 * @protected
 	 * @param {string} element_string
-	 * @param {boolean} [only_inner]
+	 * @param {false|string} [only_inner]
 	 */
 	replace_with = (element_string, only_inner = false) => {
 		if (only_inner) {
@@ -31,7 +32,7 @@ export class class_extender {
 	 * @protected
 	 * @param {string} argument_open
 	 * @param {string} argument_close
-	 * @param {boolean} [use_inner]
+	 * @param {false|string} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
 	 * - true;
 	 */
@@ -57,7 +58,7 @@ export class class_extender {
 	/**
 	 * @protected
 	 * @param {string} open_arguments
-	 * @param {boolean} [use_inner]
+	 * @param {false|string} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
 	 * - true;
 	 */
@@ -78,7 +79,7 @@ export class class_extender {
 	/**
 	 * @protected
 	 * @param {string} close_argument
-	 * @param {boolean} [use_inner]
+	 * @param {false|string} [use_inner]
 	 * - false default: use outerHTML of the element to be looped
 	 * - true;
 	 */
@@ -152,7 +153,7 @@ export class class_extender {
 	 */
 	get_current_valid_index = (index) => {
 		index++;
-		while (this.element.hasAttribute(`${vars.instruction_identifier}${index}`)) {
+		while (this.element.hasAttribute(`${__AppSettings.__._instruction_identifier}${index}`)) {
 			index++;
 		}
 		return index;
@@ -163,8 +164,8 @@ export class class_extender {
 	 */
 	set_c_next = (...arguments_) => {
 		this.element.setAttribute(
-			`${vars.instruction(this.get_current_valid_index(this.index))}`,
-			arguments_.join(vars.delimiter[0])
+			`${__AppSettings.__.instruction(this.get_current_valid_index(this.index))}`,
+			arguments_.join(__AppSettings.__._separator[0])
 		);
 	};
 	static helper = {
@@ -174,13 +175,16 @@ export class class_extender {
 		 * @param {...string} arguments_
 		 */
 		set_c: (index, element, ...arguments_) => {
-			element.setAttribute(`${vars.instruction(index)}`, arguments_.join(vars.delimiter[0]));
+			element.setAttribute(
+				`${__AppSettings.__.instruction(index)}`,
+				arguments_.join(__AppSettings.__._separator[0])
+			);
 		},
 		/**
 		 * @param {Element} element
 		 */
 		initiate_c: (element) => {
-			element.setAttribute(vars.instruction_identifier, '');
+			element.setAttribute(__AppSettings.__._instruction_identifier, '');
 		},
 		/**
 		 * @param {number} index
@@ -188,9 +192,8 @@ export class class_extender {
 		 * @param {...string} arguments_
 		 */
 		set_c_then_init: (index, element, ...arguments_) => {
-			this_.helper.set_c(index, element, ...arguments_);
-			this_.helper.initiate_c(element);
+			_ClientExtender.helper.set_c(index, element, ...arguments_);
+			_ClientExtender.helper.initiate_c(element);
 		},
 	};
 }
-const this_ = class_extender;
