@@ -18,20 +18,15 @@
 		"highly extendable"
 	],
 	"peerDependencies": {
-		"ncp": "^2.0.0",
-		"@rollup/plugin-alias": "^5.1.0",
-		"@rollup/plugin-node-resolve": "^15.2.3",
-		"@rollup/plugin-terser": "^0.4.4",
-		"cssnano": "^6.1.2",
-		"postcss": "^8.4.38",
-		"rollup": "^4.17.2",
-		"rollup-plugin-scss": "^3.0.0",
-		"sass": "^1.77.2"
+		"ncp": "^2.0.0"
 	},
 	"author": "hakim_jazuli",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/hakimjazuli/ssg_unconstraint/issues"
 	},
-	"homepage": "https://github.com/hakimjazuli/ssg_unconstraint#readme"
+	"homepage": "https://github.com/hakimjazuli/ssg_unconstraint#readme",
+	"dependencies": {
+		"@html_first/atla-as_builder": "^1.0.0"
+	}
 }

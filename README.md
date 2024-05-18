@@ -1,4 +1,4 @@
-﻿# ssg_unconstraint
+# ssg_unconstraint
 
 ## DESC
 
@@ -39,8 +39,7 @@ node ./node_modules/@html_first/ssg_unconstraint/starter.mjs
 ```js
 // @ts-check
 
-import { _RollupSettings } from '@html_first/ssg_unconstraint/builder/_RollupSettings.mjs';
-import { _RollupTarget } from '@html_first/ssg_unconstraint/builder/_RollupTarget.mjs';
+import { _RollupSettings, _RollupTarget } from '@html_first/atla-as_builder';
 
 const targets = [new _RollupTarget('bundle', '/client/html_first/index.mjs', `./`)];
 
