@@ -3,6 +3,7 @@
 import { __AppSettings } from '../vars/__AppSettings.mjs';
 import { Dispatcher } from './Dispatcher.mjs';
 import { _ClientExtender } from './_CientExtender.mjs';
+import { __ClassList } from './__ClassList.mjs';
 
 /**
  * - extends __Observer;
@@ -12,9 +13,13 @@ import { _ClientExtender } from './_CientExtender.mjs';
 export class __Observer {
 	/** @type {__Observer} */
 	static __;
-	/** @param {typeof __AppSettings} __app_settings*/
-	constructor(__app_settings) {
-		new __AppSettings();
+	/**
+	 * @param {typeof __AppSettings} __app_settings
+	 * @param {typeof __ClassList} __class_list
+	 */
+	constructor(__app_settings, __class_list) {
+		new __app_settings();
+		new __class_list();
 		if (typeof __AppSettings.__._use_window_object_helper === 'string') {
 			// @ts-ignore
 			window[use_helper] = _ClientExtender.helper;

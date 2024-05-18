@@ -5,7 +5,9 @@
 	"type": "module",
 	"main": "index.mjs",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"postinstall": "npm link @html_first/ssg_unconstraint",
+		"build": "rollup -c",
+		"watch": "rollup -c -w"
 	},
 	"repository": {
 		"type": "git",

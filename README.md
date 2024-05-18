@@ -32,8 +32,25 @@ node ./node_modules/@html_first/ssg_unconstraint/starter.mjs
 
 ```
 
--   look for **"./h_client_example/index.mjs"**, it's your entry point
+-   look for **"./client/index.mjs"**, it's your entry point
 -   build it your favourite packager
+    > -   **OR** use our bundle helper setting `rollup.config.mjs`
+
+```js
+// @ts-check
+
+import { _RollupSettings } from '@html_first/ssg_unconstraint/builder/_RollupSettings.mjs';
+import { _RollupTarget } from '@html_first/ssg_unconstraint/builder/_RollupTarget.mjs';
+
+const targets = [new _RollupTarget('bundle', '/client/html_first/index.mjs', `./`)];
+
+export default new _RollupSettings(targets).config;
+```
+
+-   > -   then save on your `package.json` to run
+    >     > -   `rollup -c` for build script or,
+    >     > -   `rollup -c -w` for build with watch;
+
 -   then use it on your html
 
 ## how to use your class on html
