@@ -1,11 +1,11 @@
 ﻿// @ts-check
 import ncp from 'ncp';
-import path from 'path';
+import { join as path_join } from 'path';
 
 const base = process.cwd();
 const folder_ = 'client';
-const source_dir = path.join(base, 'node_modules', '@html_first', 'ssg_unconstraint', folder_);
-const dest_dir = path.join(base, folder_);
+const source_dir = path_join(base, 'node_modules', '@html_first', 'ssg_unconstraint', folder_);
+const dest_dir = path_join(base, folder_);
 
 const options = {
 	clobber: true,
