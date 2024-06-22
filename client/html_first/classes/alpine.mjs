@@ -21,7 +21,7 @@ export class alpine extends _ClientExtender {
 	/**
 	 * @param {string} if_argument
 	 * @param {false|string} [use_inner]
-	 * - false default: use outerHTML of the element to be looped
+	 * - false default: use outerHTML of the element to be surrounded
 	 * - true;
 	 */
 	if = async (if_argument, use_inner = false) => {
