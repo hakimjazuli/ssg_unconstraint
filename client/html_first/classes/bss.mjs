@@ -3,7 +3,6 @@ import { _ClientExtender, __AppSettings } from '@html_first/ssg_unconstraint';
 
 export class bss extends _ClientExtender {
 	/**
-	 * Description
 	 * @param {Array<string>} target_attribute_n_value
 	 * - ...attribute_or_prop_name,attribute_or_prop_value,mode_attr_or_prop;
 	 */

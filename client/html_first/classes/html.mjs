@@ -3,7 +3,6 @@ import { _ClientExtender } from '@html_first/ssg_unconstraint';
 
 export class html extends _ClientExtender {
 	/**
-	 * Description
 	 * @param {string} message
 	 */
 	example = (message) => {
@@ -12,7 +11,6 @@ export class html extends _ClientExtender {
 		});
 	};
 	/**
-	 * Description
 	 * @param {string} class_name
 	 * @param {string} method
 	 * @param {string[]} arguments_

@@ -128,7 +128,7 @@ export class _ClientExtender {
 			(mutations_list, observer) => {
 				mutations_list.forEach((mutation) => {
 					if (!this.element.parentNode) {
-						this.element.removeEventListener('click', callback__);
+						this.element.removeEventListener(trigger, callback__);
 						observer.disconnect();
 					}
 				});

@@ -4,9 +4,9 @@
 
 have you bought Static Site Generator software? like:
 
--   **bootstrap studio**,
--   **pinegrow**,
--   **wysiwyg web builder**,
+-   `bootstrap studio`,
+-   `pinegrow`,
+-   `wysiwyg web builder`,
 -   or bassicall any closed source SSG software,
 
 there are times they also provide service to publish your litle to unprocessed site directly in
@@ -15,10 +15,10 @@ template, and doesn't allow total control of your html element. and event though
 way to do like custom component, you have to often to opt out from its basic (the WYSIWYG part)
 convenient.
 
--   **IF** you want to use frontend library/framework that their main instructions is placed in
+-   `IF` you want to use frontend library/framework that their main instructions is placed in
     attributes to elements.
--   **AND IF** your only (convinient) way is to mitigate it in the client run time,
--   **IF** you want to to **unconstrain** your ssg in client browser...
+-   `AND IF` your only (convinient) way is to mitigate it in the client run time,
+-   `IF` you want to to `unconstrain` your ssg in client browser...
 
 then this library is for you...
 
@@ -32,16 +32,16 @@ node ./node_modules/@html_first/ssg_unconstraint/starter.mjs
 
 ```
 
--   look for **"./client/index.mjs"**, it's your entry point
+-   look for `"./client/html_first/main.mjs"`, it's your entry point
 -   build it your favourite packager
-    > -   **OR** use our bundle helper setting `rollup.config.mjs`
+    > -   `OR` use our bundle helper setting `rollup.config.mjs`
 
 ```js
 // @ts-check
 
 import { _RollupSettings, _RollupTarget } from '@html_first/atla-as_builder';
 
-const targets = [new _RollupTarget('bundle', '/client/html_first/index.mjs', `./`)];
+const targets = [new _RollupTarget('bundle', '/client/html_first/main.mjs', `./`)];
 
 export default new _RollupSettings(targets).config;
 ```
@@ -66,10 +66,10 @@ means :
 -   call method named if,
 -   input toggle_me as first argument,
 
-**pattern:** add attribute on the element
+`pattern:` add attribute on the element
 
 -   client;
--   c[dash]**index**="**class_name**[vars.delimiter[0]]**method**[vars.delimiter[0]]**...arguments**"
+-   c[dash]`index`="`class_name`[`__AppSettings.`.delimiter[0]]`method`[`__AppSettings.`.delimiter[0]]`...arguments`"
 
 ## HOW this library works
 
@@ -79,12 +79,13 @@ adding _c-index_ first then... the _client_,
 
 or if you are working on the classes scope you can use our provided static function
 
--   **class_instance**.set_c_next(...**arguments**);
--   **arguments** are following our **pattern**: arg_1: **class_name**, arg_2: **method**, ...arg_3
-    **...arguments**
+-   `class_instance`.set_c_next(...`arguments`);
+-   `arguments` are following our `pattern`: arg_1: `class_name`, arg_2: `method`, ...arg_3
+    `...arguments`
 
 ## version info
 
--   **1.0.xx** past test
--   **1.1.xx** added optional helper to global scope to set and intiate required "c-index" and
+-   `1.0.xx` past test
+-   `1.1.xx` added optional helper to global scope to set and intiate required "c-index" and
     "client" to element
+-   `2.xx.xx` standard naming for class prefixes

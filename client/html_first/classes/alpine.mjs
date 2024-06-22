@@ -3,7 +3,6 @@ import { _ClientExtender } from '@html_first/ssg_unconstraint';
 
 export class alpine extends _ClientExtender {
 	/**
-	 * Description
 	 * @param {string} for_argument
 	 * @param {string} key
 	 * - alpine looped element identifier
@@ -20,7 +19,6 @@ export class alpine extends _ClientExtender {
 		);
 	};
 	/**
-	 * Description
 	 * @param {string} if_argument
 	 * @param {false|string} [use_inner]
 	 * - false default: use outerHTML of the element to be looped

@@ -1,6 +1,7 @@
 // @ts-check
 
 import { __AppSettings } from '../vars/__AppSettings.mjs';
+import { _ClientExtender } from './_CientExtender.mjs';
 import { __ClassList } from './__ClassList.mjs';
 import { __Observer } from './__Observer.mjs';
 
@@ -38,8 +39,10 @@ export class Dispatcher {
 				);
 				/** @type {typeof import("./_CientExtender.mjs")._ClientExtender}*/
 				const class_name = __ClassList.__[class_];
-				const class_instruction = new class_name(element, index);
-				await class_instruction[method_](...arguments_);
+				if (class_name) {
+					const class_instruction = new class_name(element, index);
+					await class_instruction[method_](...arguments_);
+				}
 				index++;
 			} catch (reason) {
 				console.error({

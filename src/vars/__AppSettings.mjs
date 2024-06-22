@@ -18,6 +18,10 @@ export class __AppSettings {
 	 * @type {string[]}
 	 */
 	_separator = [';', ',', '^'];
+	/**
+	 * @type {string}
+	 */
+	_window_class_list_name = 'ssg_unconstraint_class_list';
 
 	/**
 	 * @readonly
